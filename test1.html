@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đề Thi Lập Trình C++ Online - Đề 02</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Be Vietnam Pro', sans-serif;
+            background-color: #f4f7f9;
+        }
+        .nav-link.active {
+            background-color: #4a90e2;
+            color: white;
+            font-weight: 700;
+        }
+        .question-card {
+            scroll-margin-top: 80px;
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <div class="flex flex-col md:flex-row">
+        <aside class="w-full md:w-64 bg-white md:h-screen md:sticky md:top-0 border-b md:border-b-0 md:border-r">
+            <div class="p-6">
+                <h2 class="text-xl font-bold text-[#4a90e2]">Điều Hướng</h2>
+                <p class="text-sm text-gray-500 mt-1">Chọn câu hỏi để xem chi tiết.</p>
+            </div>
+            <nav>
+                <ul id="nav-list" class="space-y-1 px-4 pb-4">
+                    <li><a href="#cau1" class="nav-link block rounded-md px-4 py-2 text-gray-700 hover:bg-gray-100 transition-colors duration-200">Câu 1: Máy tính</a></li>
+                    <li><a href="#cau2" class="nav-link block rounded-md px-4 py-2 text-gray-700 hover:bg-gray-100 transition-colors duration-200">Câu 2: Tổng chẵn</a></li>
+                    <li><a href="#cau3" class="nav-link block rounded-md px-4 py-2 text-gray-700 hover:bg-gray-100 transition-colors duration-200">Câu 3: Nhập số dương</a></li>
+                    <li><a href="#cau4" class="nav-link block rounded-md px-4 py-2 text-gray-700 hover:bg-gray-100 transition-colors duration-200">Câu 4: Phân loại tam giác</a></li>
+                    <li><a href="#cau5" class="nav-link block rounded-md px-4 py-2 text-gray-700 hover:bg-gray-100 transition-colors duration-200">Câu 5: In mảng</a></li>
+                    <li><a href="#cau6" class="nav-link block rounded-md px-4 py-2 text-gray-700 hover:bg-gray-100 transition-colors duration-200">Câu 6: Lũy thừa</a></li>
+                    <li><a href="#cau7" class="nav-link block rounded-md px-4 py-2 text-gray-700 hover:bg-gray-100 transition-colors duration-200">Câu 7: Đếm số dương</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="flex-1 p-4 md:p-10">
+            <header class="mb-10 pb-4 border-b">
+                <h1 class="text-4xl font-bold text-center text-[#4a90e2]">Đề Thi Lập Trình C++ Cơ Bản</h1>
+                <p class="text-center text-gray-600 mt-2">Đề số 02 - Thời gian làm bài: 90 phút</p>
+            </header>
+
+            <div class="space-y-8">
+                <section id="cau1" class="question-card bg-white p-8 rounded-xl shadow-lg">
+                    <h3 class="text-2xl font-bold mb-4"><span class="text-[#4a90e2]">Câu 1:</span> Máy tính đơn giản</h3>
+                    <p class="mb-4">Viết chương trình cho phép người dùng nhập vào hai số nguyên <code class="bg-gray-200 px-2 py-1 rounded">a</code> và <code class="bg-gray-200 px-2 py-1 rounded">b</code>, cùng với một ký tự phép toán (<code class="bg-gray-200 px-2 py-1 rounded">+</code>, <code class="bg-gray-200 px-2 py-1 rounded">-</code>, <code class="bg-gray-200 px-2 py-1 rounded">*</code>, <code class="bg-gray-200 px-2 py-1 rounded">/</code>). Chương trình sẽ thực hiện phép tính tương ứng và in kết quả ra màn hình.</p>
+                    <div class="bg-blue-50 border-l-4 border-[#4a90e2] text-blue-800 p-4 rounded-r-lg">
+                        <p><strong class="font-semibold">Yêu cầu:</strong> Sử dụng câu lệnh <code class="font-mono">switch-case</code> hoặc <code class="font-mono">if-else if</code> để xử lý. Cần kiểm tra trường hợp chia cho 0.</p>
+                    </div>
+                </section>
+
+                <section id="cau2" class="question-card bg-white p-8 rounded-xl shadow-lg">
+                    <h3 class="text-2xl font-bold mb-4"><span class="text-[#4a90e2]">Câu 2:</span> Tổng các số chẵn</h3>
+                    <p class="mb-4">Viết chương trình nhập vào một số nguyên dương <code class="bg-gray-200 px-2 py-1 rounded">n</code>. Sử dụng vòng lặp <code class="font-mono">for</code> để tính và in ra màn hình tổng của tất cả các số chẵn từ 1 đến <code class="bg-gray-200 px-2 py-1 rounded">n</code>.</p>
+                    <p class="text-gray-600 italic">Ví dụ: Nếu <code class="font-mono">n = 10</code>, tổng sẽ là <code class="font-mono">2 + 4 + 6 + 8 + 10 = 30</code>.</p>
+                </section>
+
+                <section id="cau3" class="question-card bg-white p-8 rounded-xl shadow-lg">
+                    <h3 class="text-2xl font-bold mb-4"><span class="text-[#4a90e2]">Câu 3:</span> Yêu cầu nhập số dương</h3>
+                    <p class="mb-4">Viết chương trình yêu cầu người dùng nhập vào một số nguyên. Sử dụng vòng lặp <code class="font-mono">do-while</code> để kiểm tra: nếu người dùng nhập một số âm hoặc số 0, chương trình sẽ yêu cầu nhập lại cho đến khi người dùng nhập một số nguyên dương. Cuối cùng, in số dương đó ra màn hình.</p>
+                </section>
+
+                <section id="cau4" class="question-card bg-white p-8 rounded-xl shadow-lg">
+                    <h3 class="text-2xl font-bold mb-4"><span class="text-[#4a90e2]">Câu 4:</span> Phân loại tam giác</h3>
+                    <p class="mb-4">Viết chương trình cho phép người dùng nhập vào độ dài 3 cạnh <code class="bg-gray-200 px-2 py-1 rounded">a</code>, <code class="bg-gray-200 px-2 py-1 rounded">b</code>, <code class="bg-gray-200 px-2 py-1 rounded">c</code> của một tam giác. Kiểm tra và cho biết tam giác đó là tam giác đều, tam giác cân, hay tam giác thường.</p>
+                     <div class="bg-yellow-50 border-l-4 border-yellow-400 text-yellow-800 p-4 rounded-r-lg">
+                        <p><strong class="font-semibold">Lưu ý:</strong> Cần kiểm tra điều kiện để <code class="font-mono">a</code>, <code class="font-mono">b</code>, <code class="font-mono">c</code> có thể tạo thành một tam giác trước khi phân loại (tổng hai cạnh bất kỳ phải lớn hơn cạnh còn lại).</p>
+                    </div>
+                </section>
+
+                <section id="cau5" class="question-card bg-white p-8 rounded-xl shadow-lg">
+                    <h3 class="text-2xl font-bold mb-4"><span class="text-[#4a90e2]">Câu 5:</span> Viết hàm in mảng</h3>
+                    <p class="mb-4">Viết một hàm có tên <code class="bg-gray-200 px-2 py-1 rounded">void inMang(int arr[], int soLuongPhanTu)</code>:</p>
+                    <ul class="list-disc list-inside space-y-2 mb-4">
+                        <li>Hàm nhận vào một mảng số nguyên và số lượng phần tử của nó.</li>
+                        <li>Hàm này sẽ dùng vòng lặp <code class="font-mono">for</code> để in tất cả các phần tử của mảng ra màn hình, mỗi phần tử cách nhau một dấu tab <code class="font-mono">\t</code>.</li>
+                        <li>Trong hàm <code class="font-mono">main</code>, hãy khai báo một mảng, gán giá trị cho nó rồi gọi hàm <code class="font-mono">inMang</code> để kiểm tra.</li>
+                    </ul>
+                </section>
+
+                <section id="cau6" class="question-card bg-white p-8 rounded-xl shadow-lg">
+                    <h3 class="text-2xl font-bold mb-4"><span class="text-[#4a90e2]">Câu 6:</span> Viết hàm tính lũy thừa</h3>
+                    <p class="mb-4">Viết một hàm có tên <code class="bg-gray-200 px-2 py-1 rounded">int luyThua(int coSo, int soMu)</code>:</p>
+                     <ul class="list-disc list-inside space-y-2 mb-4">
+                        <li>Hàm nhận vào hai tham số là <code class="font-mono">coSo</code> và <code class="font-mono">soMu</code> (số nguyên không âm).</li>
+                        <li>Hàm trả về kết quả của <code class="font-mono">coSo^soMu</code> (cơ số lũy thừa số mũ).</li>
+                        <li>Trong hàm <code class="font-mono">main</code>, hãy gọi hàm này với giá trị do người dùng nhập và in kết quả ra màn hình.</li>
+                    </ul>
+                     <div class="bg-green-50 border-l-4 border-green-400 text-green-800 p-4 rounded-r-lg">
+                        <p><strong class="font-semibold">Gợi ý:</strong> Dùng vòng lặp để nhân <code class="font-mono">coSo</code> với chính nó <code class="font-mono">soMu</code> lần. Lưu ý trường hợp <code class="font-mono">soMu = 0</code>.</p>
+                    </div>
+                </section>
+
+                <section id="cau7" class="question-card bg-white p-8 rounded-xl shadow-lg">
+                    <h3 class="text-2xl font-bold mb-4"><span class="text-[#4a90e2]">Câu 7:</span> Đếm số dương trong mảng</h3>
+                    <p class="mb-4">Viết chương trình thực hiện các yêu cầu sau:</p>
+                     <ul class="list-decimal list-inside space-y-2">
+                        <li>Cho phép người dùng nhập số lượng phần tử <code class="font-mono">n</code> của mảng.</li>
+                        <li>Cho phép người dùng nhập <code class="font-mono">n</code> số nguyên (có thể có cả số âm, số 0 và số dương) vào mảng.</li>
+                        <li>Đếm và in ra màn hình có bao nhiêu số <strong>dương</strong> trong mảng vừa nhập.</li>
+                    </ul>
+                </section>
+            </div>
+        </main>
+    </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const sections = document.querySelectorAll('.question-card');
+    const navLinks = document.querySelectorAll('.nav-link');
+    const navList = document.getElementById('nav-list');
+
+    const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.4 
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const id = entry.target.getAttribute('id');
+                const activeLink = document.querySelector(`.nav-link[href="#${id}"]`);
+                
+                navLinks.forEach(link => link.classList.remove('active'));
+                if (activeLink) {
+                    activeLink.classList.add('active');
+                }
+            }
+        });
+    }, observerOptions);
+
+    sections.forEach(section => {
+        observer.observe(section);
+    });
+    
+    navList.addEventListener('click', (e) => {
+        if (e.target.tagName === 'A') {
+            e.preventDefault();
+            const targetId = e.target.getAttribute('href');
+            const targetSection = document.querySelector(targetId);
+            if (targetSection) {
+                 window.scrollTo({
+                    top: targetSection.offsetTop - 70,
+                    behavior: 'smooth'
+                });
+            }
+        }
+    });
+
+});
+</script>
+
+</body>
+</html>
