@@ -1,0 +1,613 @@
+```html
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài giảng: Chương 8. Lập trình</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f4f8ff; /* Nền xanh rất nhạt */
+            color: #333; /* Màu chữ chính */
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        #container {
+            width: 90%;
+            max-width: 1000px;
+            margin: 20px auto;
+            background-color: #ffffff; /* Nền trắng */
+            padding: 20px 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        h1, h2, h3, h4 {
+            color: #0056b3; /* Màu xanh đậm cho tiêu đề */
+        }
+
+        h1 {
+            font-size: 2.5em;
+            border-bottom: 3px solid #007bff; /* Viền xanh dương */
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-size: 2em;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 8px;
+            margin-top: 40px;
+        }
+
+        h3 {
+            font-size: 1.6em;
+            margin-top: 30px;
+            color: #006ace; /* Màu xanh dương vừa */
+        }
+
+        h4 {
+            font-size: 1.2em;
+            margin-top: 25px;
+            color: #007bff; /* Màu xanh dương sáng */
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        /* Dành cho các định nghĩa */
+        p > strong {
+            color: #0056b3;
+            font-weight: 600;
+        }
+
+        ul {
+            padding-left: 25px;
+            list-style-type: disc;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        /* Mã nội tuyến */
+        code {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #eef8ff; /* Nền xanh nhạt cho code */
+            color: #c7254e; /* Màu chữ cho code, giống màu hồng/đỏ */
+            padding: 3px 6px;
+            border-radius: 4px;
+            font-size: 0.95em;
+        }
+
+        /* Khối mã */
+        pre {
+            background-color: #f8f9fa; /* Nền xám rất nhạt */
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+            overflow-x: auto; /* Cho phép cuộn ngang nếu mã quá dài */
+            font-size: 0.9em;
+        }
+
+        /* Đặt lại style cho thẻ code bên trong pre */
+        pre code {
+            background-color: transparent;
+            color: #333;
+            padding: 0;
+            border-radius: 0;
+            font-size: 1em;
+        }
+
+        /* Bảng */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #007bff; /* Nền xanh cho tiêu đề bảng */
+            color: #ffffff; /* Chữ trắng */
+            font-weight: 600;
+        }
+
+        /* Hàng lẻ */
+        tbody tr:nth-child(odd) {
+            background-color: #f9f9f9;
+        }
+        /* Hàng chẵn */
+        tbody tr:nth-child(even) {
+            background-color: #ffffff;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div id="container">
+        <h1>CHƯƠNG 8. Lập trình</h1>
+
+        <h2>8.1 - Khái niệm lập trình</h2>
+
+        <h3>8.1.1 Biến và hằng</h3>
+        
+        <h4>Định nghĩa</h4>
+        [cite_start]<p><strong>Variable (Biến):</strong> một vị trí lưu trữ có tên mà giá trị của nó có thể thay đổi trong khi chương trình thực thi. [cite: 6]</p>
+        [cite_start]<p><strong>Constant (Hằng):</strong> một giá trị có tên không thay đổi sau khi đã được định nghĩa (dùng cho các giá trị cố định). [cite: 7]</p>
+
+        <h4>Khai báo & đặt tên</h4>
+        <p>Nhiều ngôn ngữ yêu cầu hoặc cho phép khai báo tường minh (kiểu hoặc từ khóa). [cite_start]Ví dụ: [cite: 9]</p>
+        <ul>
+            [cite_start]<li>Python: <code>count = 0</code> (không khai báo kiểu tường minh) [cite: 10]</li>
+            [cite_start]<li>Java: <code>int count = 0;</code> [cite: 11]</li>
+            [cite_start]<li>Visual Basic: <code>Dim count As Integer = 0</code> [cite: 12]</li>
+        </ul>
+        [cite_start]<p>Quy tắc / hướng dẫn đặt tên: [cite: 13]</p>
+        <ul>
+            [cite_start]<li>Bắt đầu bằng một chữ cái (hoặc dấu gạch dưới ở một số ngôn ngữ); tránh khoảng trắng và các ký tự đặc biệt. [cite: 14]</li>
+            [cite_start]<li>Sử dụng tên có tính mô tả (<code>studentAge</code> thay vì <code>a</code>). [cite: 15]</li>
+            [cite_start]<li>Tuân thủ quy ước: camelCase cho biến, UPPER_SNAKE cho hằng (ví dụ: <code>MAX_SCORE</code>). [cite: 16, 17]</li>
+            [cite_start]<li>Tránh các từ khóa dành riêng (reserved keywords). [cite: 18]</li>
+        </ul>
+
+        <h4>Sự khác biệt</h4>
+        <ul>
+            [cite_start]<li><strong>Tính biến đổi:</strong> Biến có thể thay đổi; hằng thì không. [cite: 20]</li>
+            [cite_start]<li><strong>Mục đích:</strong> Hằng cải thiện khả năng đọc và giảm lỗi khi một giá trị cố định được sử dụng ở nhiều nơi. [cite: 21, 22]</li>
+        </ul>
+
+        <h3>8.1.2 Các kiểu dữ liệu cơ bản</h3>
+        <ul>
+            [cite_start]<li><strong>Integer (int):</strong> số nguyên (ví dụ: -3, 0, 42). [cite: 24]</li>
+            [cite_start]<li><strong>Real / Float:</strong> số có phần thập phân (ví dụ: 3.14). [cite: 24]</li>
+            [cite_start]<li><strong>Character (char):</strong> ký tự đơn (ví dụ: 'A'). [cite: 25]</li>
+            [cite_start]<li><strong>String:</strong> chuỗi ký tự (ví dụ: "Hello"). [cite: 26]</li>
+            [cite_start]<li><strong>Boolean:</strong> kiểu logic hai giá trị (True / False). [cite: 27]</li>
+        </ul>
+
+        <h4>Ghi chú quan trọng</h4>
+        <ul>
+            [cite_start]<li>Kiểu dữ liệu xác định các phép toán có sẵn và cách biểu diễn trong bộ nhớ. [cite: 29]</li>
+            <li>Một số ngôn ngữ thực hiện chuyển đổi kiểu ngầm định; [cite_start]ép kiểu tường minh thường an toàn hơn. [cite: 30, 31]</li>
+        </ul>
+
+        <h3>8.1.3 Nhập và xuất (Input and output)</h3>
+
+        <h4>Input (Nhập)</h4>
+        <p>Đọc dữ liệu từ người dùng hoặc nguồn bên ngoài. [cite_start]Ví dụ: [cite: 34]</p>
+        <ul>
+            [cite_start]<li>Python: <code>name = input("Enter name: ")</code> [cite: 34]</li>
+            <li>Java: <code>Scanner sc = new Scanner(System.in); [cite_start]String name = sc.nextLine();</code> [cite: 35]</li>
+            [cite_start]<li>VB: <code>name = Console.ReadLine()</code> [cite: 36]</li>
+        </ul>
+
+        <h4>Output (Xuất)</h4>
+        [cite_start]<p>Hiển thị thông tin cho người dùng: [cite: 40]</p>
+        <ul>
+            [cite_start]<li>Python: <code>print("Hello", name)</code> [cite: 41]</li>
+            [cite_start]<li>Java: <code>System.out.println("Hello " + name);</code> [cite: 42, 43]</li>
+            [cite_start]<li>VB: <code>Console.WriteLine("Hello " & name)</code> [cite: 44]</li>
+        </ul>
+
+        <h4>Prompts & validation (Lời nhắc & xác thực)</h4>
+        <ul>
+            [cite_start]<li>Luôn nhắc để người dùng biết cần nhập gì. [cite: 47]</li>
+            [cite_start]<li>Xác thực đầu vào (kiểu, phạm vi) trước khi sử dụng. [cite: 48]</li>
+        </ul>
+
+        <h4>Casting / Type conversion (Ép kiểu / Chuyển đổi kiểu)</h4>
+        [cite_start]<p>Chuyển đổi giữa các kiểu khi cần thiết: [cite: 50]</p>
+        <ul>
+            [cite_start]<li>Python: <code>age = int(input("Age: "))</code> [cite: 51]</li>
+            [cite_start]<li>Java: <code>int age = Integer.parseInt(sc.nextLine());</code> [cite: 52, 53]</li>
+        </ul>
+        [cite_start]<p>Xử lý lỗi chuyển đổi (exceptions, thông báo lỗi) để tránh crash chương trình. [cite: 54, 55]</p>
+
+        <h3>8.1.4 Các khái niệm cơ bản</h3>
+
+        <h4>(a) Sequence (Tuần tự)</h4>
+        [cite_start]<p>Chương trình thực thi các câu lệnh theo thứ tự (từ trên xuống dưới) trừ khi các cấu trúc điều khiển thay đổi luồng. [cite: 58]</p>
+        [cite_start]<p>Bảng theo dõi (Trace tables) được sử dụng để theo dõi giá trị của biến từng bước một để hiểu hoặc gỡ lỗi chương trình. [cite: 59]</p>
+        
+        [cite_start]<p>Ví dụ bảng theo dõi: [cite: 60]</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Step</th>
+                    <th>Statement</th>
+                    <th>x</th>
+                    <th>y</th>
+                    <th>output</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td><code>x = 2</code></td>
+                    <td>2</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td><code>y = x + 3</code></td>
+                    <td>2</td>
+                    <td>5</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td><code>print(y)</code></td>
+                    <td>2</td>
+                    <td>5</td>
+                    <td>5</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h4>(b) Selection (Rẽ nhánh)</h4>
+        <p>Chọn các hành động khác nhau dựa trên điều kiện. [cite_start]Các dạng phổ biến: IF (hoặc if-else), CASE (switch). [cite: 63, 64]</p>
+        
+        [cite_start]<p><strong>Python</strong> [cite: 65]</p>
+        <pre><code>if score >= 50:
+    print("Pass")
+else:
+    print("Fail")</code></pre>
+        
+        [cite_start]<p><strong>Java</strong> [cite: 70]</p>
+        <pre><code>if (score >= 50) {
+    System.out.println("Pass");
+} else {
+    System.out.println("Fail");
+}</code></pre>
+
+        [cite_start]<p><strong>VB</strong> [cite: 78]</p>
+        <pre><code>If score >= 50 Then
+    Console.WriteLine("Pass")
+Else
+    Console.WriteLine("Fail")
+End If</code></pre>
+
+        <h4>(c) Iteration (Lặp)</h4>
+        <p>Lặp lại các hành động. [cite_start]Các vòng lặp phổ biến: FOR, WHILE, DO/LOOP (vòng lặp điều kiện trước và điều kiện sau). [cite: 85]</p>
+        <ul>
+            [cite_start]<li><strong>Vòng lặp có kiểm soát số lần (Count-controlled loop):</strong> lặp lại một số lần cố định (<code>for i in range(5)</code>). [cite: 86]</li>
+            [cite_start]<li><strong>Vòng lặp có kiểm soát điều kiện (Condition-controlled loop):</strong> lặp lại khi một điều kiện còn đúng (<code>while not done</code>). [cite: 87]</li>
+        </ul>
+
+        [cite_start]<p><strong>Ví dụ (Python for):</strong> [cite: 89]</p>
+        <pre><code>for i in range(1, 6):
+    print(i)</code></pre>
+
+        [cite_start]<p><strong>Ví dụ (Java while):</strong> [cite: 92]</p>
+        <pre><code>int i = 1;
+while (i <= 5) {
+    System.out.println(i);
+    i++;
+}</code></pre>
+
+        [cite_start]<p><strong>Ví dụ điều kiện sau (do-while trong Java):</strong> [cite: 98]</p>
+        <pre><code>do {
+    // body
+} while (condition);</code></pre>
+
+        <h4>(d) Totalling and counting (Tính tổng và đếm)</h4>
+        [cite_start]<p>Hai tác vụ lặp phổ biến: [cite: 103]</p>
+        <ul>
+            [cite_start]<li><strong>Totalling (tích lũy):</strong> cộng các giá trị vào một tổng đang chạy. [cite: 104]
+                [cite_start]<br><code>total = total + value</code> [cite: 105]</li>
+            [cite_start]<li><strong>Counting (đếm):</strong> tăng một bộ đếm khi thỏa mãn điều kiện. [cite: 106, 110, 111]
+                [cite_start]<br><code>count = count + 1</code> [cite: 107]</li>
+        </ul>
+        [cite_start]<p><strong>Mô hình (Pattern):</strong> [cite: 108]</p>
+        <pre><code>total = 0
+count = 0
+for each item in collection:
+    total = total + item.value
+    if item.meetsCondition then
+        count = count + 1</code></pre>
+
+        <h4>(e) String handling (Xử lý chuỗi)</h4>
+        [cite_start]<p>Các thao tác phổ biến: độ dài, chuỗi con, nối chuỗi, chuyển đổi chữ hoa/thường, truy cập theo chỉ mục. [cite: 121]</p>
+        <ul>
+            [cite_start]<li><code>len(s)</code> (Python), <code>s.length()</code> (Java) [cite: 122]</li>
+            [cite_start]<li><code>s[0]</code> hoặc <code>s.charAt(0)</code> (truy cập ký tự) [cite: 123]</li>
+            [cite_start]<li><code>s.upper()</code> / <code>s.lower()</code> [cite: 124]</li>
+            [cite_start]<li><code>s.substring(start, end)</code> [cite: 125]</li>
+        </ul>
+        [cite_start]<p><strong>Ví dụ (Python):</strong> [cite: 126]</p>
+        <pre><code>s = "Hello"
+print(len(s))       # 5
+print(s[1:4])       # 'ell'
+print(s.upper())    # 'HELLO'</code></pre>
+
+        <h4>(f) Arithmetic, logical and Boolean operators (Toán tử số học, logic và Boolean)</h4>
+        <ul>
+            [cite_start]<li><strong>Số học:</strong> <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, <code>//</code> (chia nguyên), <code>%</code> (modulus), <code>**</code> (lũy thừa). [cite: 136]</li>
+            [cite_start]<li><strong>Logic / Boolean:</strong> <code>AND</code> (and), <code>OR</code> (or), <code>NOT</code> (not). [cite: 137]</li>
+            [cite_start]<li>Thứ tự ưu tiên của toán tử rất quan trọng (sử dụng dấu ngoặc đơn để làm rõ). [cite: 138]</li>
+        </ul>
+        [cite_start]<p><strong>Ví dụ:</strong> [cite: 139]</p>
+        <ul>
+            [cite_start]<li><code>remainder = n % 10</code> (chữ số cuối cùng) [cite: 140]</li>
+            [cite_start]<li><code>isValid = (age > 18) and (hasTicket == True)</code> [cite: 141]</li>
+        </ul>
+
+        <h3>8.1.5 Sử dụng các câu lệnh lồng nhau (nested statements)</h3>
+        [cite_start]<p>Lồng nhau là đặt một cấu trúc điều khiển bên trong một cấu trúc khác (vòng lặp lồng vòng lặp, if lồng for, v.v.). [cite: 143, 144]</p>
+        [cite_start]<p>Hữu ích cho dữ liệu 2D (ma trận) hoặc các quyết định đa cấp. [cite: 145]</p>
+        [cite_start]<p><strong>Ví dụ - bảng cửu chương (pseudocode):</strong> [cite: 146]</p>
+        <pre><code>for row from 1 to 5:
+    for col from 1 to 5:
+        print(row * col)</code></pre>
+        [cite_start]<p><strong>Lưu ý:</strong> Các cấu trúc lồng nhau sâu làm tăng độ phức tạp và có thể khó đọc và bảo trì hơn. [cite: 151, 152]</p>
+
+        <h3>8.1.6 Thủ tục (Procedures) và hàm (Functions)</h3>
+        <ul>
+            [cite_start]<li><strong>Procedure (subroutine):</strong> thực hiện các hành động nhưng không trả về giá trị (có thể thay đổi trạng thái chương trình). [cite: 156]</li>
+            [cite_start]<li><strong>Function:</strong> trả về một giá trị và thường được sử dụng trong các biểu thức. [cite: 157]</li>
+        </ul>
+
+        <h4>Parameters (Tham số)</h4>
+        <ul>
+            [cite_start]<li><strong>By value (Truyền bằng giá trị):</strong> một bản sao được truyền (bản gốc không thay đổi). [cite: 158]</li>
+            [cite_start]<li><strong>By reference (Truyền bằng tham chiếu):</strong> một tham chiếu được truyền (hàm có thể sửa đổi bản gốc). [cite: 159]</li>
+        </ul>
+
+        <h4>Local vs Global variables (Biến cục bộ và toàn cục)</h4>
+        <ul>
+            [cite_start]<li><strong>Local (Cục bộ):</strong> được khai báo bên trong một thủ tục/hàm; phạm vi giới hạn trong đó. [cite: 161]</li>
+            [cite_start]<li><strong>Global (Toàn cục):</strong> được khai báo ở cấp độ chương trình; có thể truy cập ở mọi nơi (sử dụng một cách hạn chế). [cite: 161, 162]</li>
+        </ul>
+
+        [cite_start]<p><strong>Ví dụ (Hàm Python):</strong> [cite: 162]</p>
+        <pre><code>def add(a, b):
+    return a + b
+
+result = add(2, 3)</code></pre>
+
+        <h3>8.1.7 Thói quen thư viện (Library routines)</h3>
+        [cite_start]<p>Các thói quen thư viện chuẩn cung cấp các hoạt động phổ biến: [cite: 167]</p>
+        <ul>
+            [cite_start]<li><code>MOD</code> / <code>%</code> (phần dư) [cite: 168, 172]</li>
+            [cite_start]<li><code>DIV</code> / <code>//</code> (chia nguyên) [cite: 169, 173]</li>
+            [cite_start]<li><code>ROUND(x)</code> (làm tròn đến số nguyên gần nhất hoặc độ chính xác cho trước) [cite: 170, 174]</li>
+            [cite_start]<li><code>RANDOM()</code> (số ngẫu nhiên, thường trong phạm vi [0,1) hoặc phạm vi số nguyên khi được chỉ định) [cite: 171, 175, 176]</li>
+        </ul>
+        [cite_start]<p><strong>Ví dụ:</strong> [cite: 177]</p>
+        <ul>
+            [cite_start]<li><code>remainder = x % 3</code> [cite: 178]</li>
+            [cite_start]<li><code>quotient = x // 3</code> (chia nguyên) [cite: 179]</li>
+            [cite_start]<li><code>r = random.randint(1, 10)</code> (số nguyên ngẫu nhiên trong Python) [cite: 180]</li>
+        </ul>
+
+        <h3>8.1.8 Tạo một chương trình có khả năng bảo trì</h3>
+        
+        <h4>Các thực hành chính</h4>
+        <ul>
+            [cite_start]<li><strong>Đặt tên:</strong> tên biến/thủ tục có tính mô tả. [cite: 183]</li>
+            [cite_start]<li><strong>Module hóa:</strong> chia mã thành các hàm hoặc module nhỏ. [cite: 184]</li>
+            [cite_start]<li><strong>Comments (Bình luận):</strong> giải thích logic không rõ ràng; tránh các bình luận thừa. [cite: 184]</li>
+            [cite_start]<li><strong>Phong cách nhất quán:</strong> thụt lề, khoảng cách, quy ước đặt tên. [cite: 185]</li>
+            [cite_start]<li><strong>Tránh trùng lặp:</strong> DRY "Don't Repeat Yourself". [cite: 185]</li>
+            [cite_start]<li><strong>Xử lý lỗi:</strong> xác thực đầu vào và xử lý lỗi runtime. [cite: 186]</li>
+            [cite_start]<li><strong>Tài liệu (Documentation):</strong> mô tả ngắn gọn mục đích, tham số và giá trị trả về cho các hàm. [cite: 186, 187]</li>
+        </ul>
+
+        [cite_start]<p><strong>Ví dụ về tiêu đề hàm (comment):</strong> [cite: 188]</p>
+        <pre><code># compute_average(scores: list of int) -> float
+# Trả về giá trị trung bình cộng của scores; trả về 0.0 nếu danh sách rỗng.</code></pre>
+
+        
+        <h2>8.2 Mảng (Arrays)</h2>
+
+        <h3>8.2.1 Mảng một chiều và hai chiều</h3>
+
+        <h4>Định nghĩa</h4>
+        [cite_start]<p>Mảng là một tập hợp các phần tử cùng kiểu dữ liệu được lưu trữ dưới một tên duy nhất và được truy cập bằng một chỉ mục (hoặc các chỉ mục). [cite: 195]</p>
+
+        <h4>Mảng một chiều (1D)</h4>
+        [cite_start]<p>Khái niệm: một danh sách tuyến tính các phần tử, ví dụ: <code>A[0]</code>, <code>A[1]</code>, ... <code>A[n-1]</code>. [cite: 197, 201]</p>
+        [cite_start]<p>Ví dụ khai báo: [cite: 198]</p>
+        <ul>
+            [cite_start]<li>Python: <code>arr = [0] * 5</code> (tạo danh sách có 5 số 0) [cite: 199]</li>
+            [cite_start]<li>Java: <code>int[] arr = new int[5];</code> [cite: 199]</li>
+            [cite_start]<li>Visual Basic: <code>Dim arr(4) As Integer</code> (chỉ mục 0..4 trong VB.NET) [cite: 200, 202]</li>
+        </ul>
+
+        <h4>Mảng hai chiều (2D)</h4>
+        <p>Khái niệm: một mảng của các mảng; về mặt logic là một lưới hoặc ma trận có hàng và cột. [cite_start]Được truy cập bằng hai chỉ mục: <code>M[row][col]</code>. [cite: 203, 204]</p>
+        [cite_start]<p>Ví dụ khai báo: [cite: 205]</p>
+        <ul>
+            [cite_start]<li>Python: <code>matrix = [[0 for c in range(cols)] for r in range(rows)]</code> [cite: 206, 208]</li>
+            [cite_start]<li>Java: <code>int[][] matrix = new int[rows][cols];</code> [cite: 207, 209]</li>
+            [cite_start]<li>Visual Basic: <code>Dim matrix(rows-1, cols-1) As Integer</code> [cite: 210]</li>
+        </ul>
+
+        <h4>Bắt đầu chỉ mục: 0 hay 1</h4>
+        [cite_start]<p>Một số ngôn ngữ sử dụng chỉ mục bắt đầu từ 0 (phổ biến: Python, Java, họ C): phần tử đầu tiên là chỉ mục 0, phần tử cuối cùng là chỉ mục <code>length-1</code>. [cite: 212]</p>
+        <p>Các môi trường hoặc tài liệu giảng dạy khác đôi khi sử dụng chỉ mục bắt đầu từ 1 (ký hiệu toán học hoặc một số pseudocode/sách giáo khoa). [cite_start]Luôn kiểm tra quy ước của ngôn ngữ. [cite: 213]</p>
+
+        <h4>Các cạm bẫy phổ biến (Common pitfalls)</h4>
+        <ul>
+            [cite_start]<li><strong>Lỗi Off-by-one:</strong> lặp đến <code><= length</code> thay vì <code>< length</code> gây ra truy cập ngoài giới hạn. [cite: 215]</li>
+            [cite_start]<li><strong>Sai thứ tự chỉ mục cho mảng 2D</strong> (nhầm lẫn giữa hàng và cột). [cite: 216]</li>
+            [cite_start]<li><strong>Phần tử chưa được khởi tạo:</strong> truy cập các phần tử trước khi chúng được gán giá trị (một số ngôn ngữ cung cấp giá trị mặc định, một số khác thì không). [cite: 217]</li>
+        </ul>
+        
+        <h3>8.2.2 Khai báo và điền dữ liệu vào mảng bằng vòng lặp</h3>
+
+        <h4>Điền dữ liệu vào mảng 1D bằng vòng lặp</h4>
+        [cite_start]<p><strong>Pseudocode:</strong> [cite: 225]</p>
+        <pre><code>Declare arr[5]
+for i from 0 to 4 do
+    arr[i] = input("Enter value for position " + i)
+end for</code></pre>
+        [cite_start]<p><strong>Ví dụ Python:</strong> [cite: 232]</p>
+        <pre><code>arr = [0] * 5
+for i in range(5):
+    arr[i] = int(input(f"Value for index {i}: "))</code></pre>
+
+        <h4>Duyệt và các thao tác phổ biến (1D)</h4>
+        [cite_start]<p><strong>Tổng các phần tử:</strong> [cite: 239]</p>
+        <pre><code>total = 0
+for i from 0 to n-1 do
+    total = total + arr[i]
+end for</code></pre>
+        [cite_start]<p><strong>Tìm giá trị lớn nhất:</strong> [cite: 244]</p>
+        <pre><code>max_val = arr[0]
+for i from 1 to n-1 do
+    if arr[i] > max_val then
+        max_val = arr[i]
+    end if
+end for</code></pre>
+
+        <h4>Điền dữ liệu vào mảng 2D bằng vòng lặp lồng nhau</h4>
+        [cite_start]<p><strong>Pseudocode:</strong> [cite: 251]</p>
+        <pre><code>Declare matrix[rows][cols]
+for r from 0 to rows-1 do
+    for c from 0 to cols-1 do
+        matrix[r][c] = input("Value for (" + r + "," + c + ")")
+    end for
+end for</code></pre>
+        [cite_start]<p><strong>Ví dụ Python:</strong> [cite: 258]</p>
+        <pre><code>rows, cols = 3, 4
+matrix = [[0] * cols for _ in range(rows)]
+for r in range(rows):
+    for c in range(cols):
+        matrix[r][c] = int(input(f"Enter value for [{r}, {c}]: "))</code></pre>
+        
+        <h4>Các thao tác 2D phổ biến</h4>
+        <ul>
+            [cite_start]<li><strong>Tổng hàng hoặc cột:</strong> sử dụng vòng lặp lồng nhau tính tổng trên chỉ mục thích hợp. [cite: 267, 268]</li>
+            [cite_start]<li><strong>Chuyển vị (Transpose):</strong> tạo ra <code>B[c][r] = A[r][c]</code>. [cite: 269]</li>
+            [cite_start]<li><strong>Tìm kiếm:</strong> vòng lặp lồng nhau để kiểm tra từng ô nếu cần. [cite: 270]</li>
+        </ul>
+        [cite_start]<p><strong>Ví dụ - tổng tất cả các phần tử trong mảng 2D (pseudocode):</strong> [cite: 271]</p>
+        <pre><code>total = 0
+for r from 0 to rows-1 do
+    for c from 0 to cols-1 do
+        total = total + matrix[r][c]
+    end for
+end for</code></pre>
+        
+        <h2>8.3 Xử lý tệp (File handling)</h2>
+
+        <h3>8.3.1 Mục đích của việc lưu trữ dữ liệu trong tệp</h3>
+        
+        <h4>Persistence (Tính bền bỉ)</h4>
+        [cite_start]<p>Tệp cho phép dữ liệu tồn tại sau khi chương trình kết thúc, không giống như các biến trong bộ nhớ (dễ bay hơi). [cite: 288, 289, 292]</p>
+
+        <h4>Sharing & interoperability (Chia sẻ & khả năng tương tác)</h4>
+        [cite_start]<p>Tệp cung cấp một cách chuẩn để trao đổi dữ liệu giữa các chương trình, người dùng hoặc hệ thống (ví dụ: CSV, JSON). [cite: 293]</p>
+
+        <h4>Capacity & organization (Dung lượng & tổ chức)</h4>
+        [cite_start]<p>Tệp có thể lưu trữ các bộ dữ liệu lớn hơn các cấu trúc trong bộ nhớ thông thường và cho phép bố cục có cấu trúc (bản ghi, bảng). [cite: 295]</p>
+        
+        <h4>Backup & audit (Sao lưu & kiểm toán)</h4>
+        [cite_start]<p>Tệp có thể được sao chép và lưu trữ để phục hồi hoặc kiểm toán. [cite: 297]</p>
+
+        <h3>8.3.2 Sử dụng tệp (mở / đọc / ghi / đóng)</h3>
+
+        [cite_start]<h4>Tổng quan các hoạt động phổ biến (pseudocode)</h4> [cite: 310]
+        <pre><code>// mở tệp để đọc hoặc ghi
+file = open(filename, mode)
+[cite_start]// mode: 'r' đọc, 'w' ghi (ghi đè), 'a' nối [cite: 313, 314]
+
+// đọc
+[cite_start]line = file.readLine() [cite: 317]
+[cite_start]while line is not EOF do [cite: 318]
+    [cite_start]process(line) [cite: 319]
+    [cite_start]line = file.readLine() [cite: 320]
+[cite_start]end while [cite: 322]
+
+// ghi
+[cite_start]file.write("some text\n") [cite: 324]
+
+// đóng
+[cite_start]file.close() [cite: 326]</code></pre>
+
+        <h4>Các thực hành quan trọng</h4>
+        <ul>
+            [cite_start]<li>Luôn đóng tệp sau khi sử dụng để giải phóng tài nguyên và xóa bộ đệm (flush buffers). [cite: 328]</li>
+            [cite_start]<li>Ưu tiên các cấu trúc ngôn ngữ tự động quản lý việc đóng (ví dụ: <code>with</code> của Python, <code>try-with-resources</code> của Java). [cite: 329]</li>
+            [cite_start]<li>Xác thực rằng tệp đã mở thành công và xử lý các ngoại lệ (exceptions). [cite: 330]</li>
+            [cite_start]<li>Cẩn thận với các chế độ (modes): <code>w</code> cắt ngắn (truncates) tệp, <code>a</code> nối vào cuối tệp. [cite: 330]</li>
+        </ul>
+
+        <h4>Ví dụ Python</h4>
+        [cite_start]<p><strong>Ghi tệp văn bản (an toàn):</strong> [cite: 332]</p>
+        <pre><code>with open('data.txt', 'w', encoding='utf-8') as f:
+    f.write('Hello world\n')
+    f.write('Second line\n')
+# [cite_start]tệp được đóng tự động [cite: 336]</code></pre>
+
+        [cite_start]<p><strong>Đọc tệp văn bản:</strong> [cite: 339]</p>
+        <pre><code>with open('data.txt', 'r', encoding='utf-8') as f:
+    for line in f:
+        print(line.strip())</code></pre>
+
+        [cite_start]<p><strong>Nối tệp và xử lý lỗi:</strong> [cite: 343]</p>
+        <pre><code>try:
+    with open('log.txt', 'a', encoding='utf-8') as log:
+        log.write('New entry\n')
+except IOError as e:
+    print('File error:', e)</code></pre>
+
+        <h4>Ví dụ Java</h4>
+        [cite_start]<p><strong>Ghi tệp văn bản (try-with-resources):</strong> [cite: 355]</p>
+        <pre><code>import java.io.*;
+try (BufferedWriter writer = new BufferedWriter(new FileWriter("data.txt"))) {
+    writer.write("Hello world");
+    writer.newLine();
+} catch (IOException e) {
+    e.printStackTrace();
+}</code></pre>
+
+        [cite_start]<p><strong>Đọc tệp văn bản:</strong> [cite: 364]</p>
+        <pre><code>try (BufferedReader reader = new BufferedReader(new FileReader("data.txt"))) {
+    String line;
+    while ((line = reader.readLine()) != null) {
+        System.out.println(line);
+    }
+} catch (IOException e) {
+    e.printStackTrace();
+}</code></pre>
+
+        <h4>Ví dụ Visual Basic (VB.NET)</h4>
+        [cite_start]<p><strong>Ghi tệp văn bản:</strong> [cite: 380]</p>
+        <pre><code>Imports System.IO
+Using writer As StreamWriter = New StreamWriter("data.txt", False, System.Text.Encoding.UTF8)
+    writer.WriteLine("Hello world")
+End Using</code></pre>
+
+        [cite_start]<p><strong>Đọc tệp văn bản:</strong> [cite: 386]</p>
+        <pre><code>Using reader As StreamReader = New StreamReader("data.txt")
+    Dim line As String = reader.ReadLine()
+    While line IsNot Nothing
+        Console.WriteLine(line)
+        line = reader.ReadLine()
+    End While
+End Using</code></pre>
+
+        [cite_start]<p><strong>Nối vào tệp:</strong> [cite: 395]</p>
+        <pre><code>Using writer As StreamWriter = New StreamWriter("log.txt", True)
+    writer.WriteLine("New log entry")
+End Using</code></pre>
+    </div>
+
+</body>
+</html>
+```

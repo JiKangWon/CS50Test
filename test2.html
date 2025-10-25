@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đề Thi Lập Trình C++ Online - Đề 03</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Be Vietnam Pro', sans-serif;
+            background-color: #f4f7f9;
+        }
+        .nav-link.active {
+            background-color: #4a90e2;
+            color: white;
+            font-weight: 700;
+        }
+        .question-card {
+            scroll-margin-top: 80px;
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <div class="flex flex-col md:flex-row">
+        <aside class="w-full md:w-64 bg-white md:h-screen md:sticky md:top-0 border-b md:border-b-0 md:border-r">
+            <div class="p-6">
+                <h2 class="text-xl font-bold text-[#4a90e2]">Điều Hướng</h2>
+                <p class="text-sm text-gray-500 mt-1">Chọn câu hỏi để xem chi tiết.</p>
+            </div>
+            <nav>
+                <ul id="nav-list" class="space-y-1 px-4 pb-4">
+                    <li><a href="#cau1" class="nav-link block rounded-md px-4 py-2 text-gray-700 hover:bg-gray-100 transition-colors duration-200">Câu 1: Ngày trong tuần</a></li>
+                    <li><a href="#cau2" class="nav-link block rounded-md px-4 py-2 text-gray-700 hover:bg-gray-100 transition-colors duration-200">Câu 2: Giai thừa</a></li>
+                    <li><a href="#cau3" class="nav-link block rounded-md px-4 py-2 text-gray-700 hover:bg-gray-100 transition-colors duration-200">Câu 3: Nhập trong khoảng</a></li>
+                    <li><a href="#cau4" class="nav-link block rounded-md px-4 py-2 text-gray-700 hover:bg-gray-100 transition-colors duration-200">Câu 4: Năm nhuận</a></li>
+                    <li><a href="#cau5" class="nav-link block rounded-md px-4 py-2 text-gray-700 hover:bg-gray-100 transition-colors duration-200">Câu 5: In số lẻ</a></li>
+                    <li><a href="#cau6" class="nav-link block rounded-md px-4 py-2 text-gray-700 hover:bg-gray-100 transition-colors duration-200">Câu 6: Số nguyên tố</a></li>
+                    <li><a href="#cau7" class="nav-link block rounded-md px-4 py-2 text-gray-700 hover:bg-gray-100 transition-colors duration-200">Câu 7: Tìm giá trị lớn nhất</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="flex-1 p-4 md:p-10">
+            <header class="mb-10 pb-4 border-b">
+                <h1 class="text-4xl font-bold text-center text-[#4a90e2]">Đề Thi Lập Trình C++ Cơ Bản</h1>
+                <p class="text-center text-gray-600 mt-2">Đề số 03 - Thời gian làm bài: 90 phút</p>
+            </header>
+
+            <div class="space-y-8">
+                <section id="cau1" class="question-card bg-white p-8 rounded-xl shadow-lg">
+                    <h3 class="text-2xl font-bold mb-4"><span class="text-[#4a90e2]">Câu 1:</span> Ngày trong tuần</h3>
+                    <p class="mb-4">Viết chương trình cho phép người dùng nhập vào một số nguyên <code class="bg-gray-200 px-2 py-1 rounded">n</code> (từ 1 đến 7). Chương trình sẽ in ra ngày trong tuần tương ứng (1 là "Thứ Hai", 2 là "Thứ Ba", ..., 7 là "Chủ Nhật"). Nếu người dùng nhập số ngoài khoảng 1-7, in ra "Không hợp lệ".</p>
+                    <div class="bg-blue-50 border-l-4 border-[#4a90e2] text-blue-800 p-4 rounded-r-lg">
+                        <p><strong class="font-semibold">Yêu cầu:</strong> Sử dụng câu lệnh <code class="font-mono">switch-case</code> để xử lý.</p>
+                    </div>
+                </section>
+
+                <section id="cau2" class="question-card bg-white p-8 rounded-xl shadow-lg">
+                    <h3 class="text-2xl font-bold mb-4"><span class="text-[#4a90e2]">Câu 2:</span> Tính Giai Thừa</h3>
+                    <p class="mb-4">Viết chương trình nhập vào một số nguyên không âm <code class="bg-gray-200 px-2 py-1 rounded">n</code>. Sử dụng vòng lặp <code class="font-mono">for</code> để tính và in ra màn hình <code class="font-mono">n!</code> (n giai thừa).</p>
+                    <p class="text-gray-600 italic">Ví dụ: Nếu <code class="font-mono">n = 5</code>, giai thừa là <code class="font-mono">1 * 2 * 3 * 4 * 5 = 120</code>. (Lưu ý: <code class="font-mono">0! = 1</code>).</p>
+                </section>
+
+                <section id="cau3" class="question-card bg-white p-8 rounded-xl shadow-lg">
+                    <h3 class="text-2xl font-bold mb-4"><span class="text-[#4a90e2]">Câu 3:</span> Yêu cầu nhập trong khoảng</h3>
+                    <p class="mb-4">Viết chương trình yêu cầu người dùng nhập vào một số nguyên. Sử dụng vòng lặp <code class="font-mono">do-while</code> để kiểm tra: nếu người dùng nhập một số nằm ngoài khoảng <code class="font-mono">[1, 100]</code>, chương trình sẽ yêu cầu nhập lại cho đến khi người dùng nhập một số hợp lệ. Cuối cùng, in số đó ra màn hình.</p>
+                </section>
+
+                <section id="cau4" class="question-card bg-white p-8 rounded-xl shadow-lg">
+                    <h3 class="text-2xl font-bold mb-4"><span class="text-[#4a90e2]">Câu 4:</span> Kiểm tra năm nhuận</h3>
+                    <p class="mb-4">Viết chương trình cho phép người dùng nhập vào một năm dương lịch <code class="bg-gray-200 px-2 py-1 rounded">nam</code>. Kiểm tra và in ra màn hình xem năm đó có phải là năm nhuận hay không.</p>
+                     <div class="bg-yellow-50 border-l-4 border-yellow-400 text-yellow-800 p-4 rounded-r-lg">
+                        <p><strong class="font-semibold">Lưu ý:</strong> Một năm là năm nhuận nếu nó thỏa mãn một trong các điều kiện sau:</p>
+                        <ul class="list-disc list-inside ml-4 mt-2">
+                            <li>Chia hết cho 4 nhưng không chia hết cho 100.</li>
+                            <li>Chia hết cho 400.</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section id="cau5" class="question-card bg-white p-8 rounded-xl shadow-lg">
+                    <h3 class="text-2xl font-bold mb-4"><span class="text-[#4a90e2]">Câu 5:</span> Viết hàm in số lẻ</h3>
+                    <p class="mb-4">Viết một hàm có tên <code class="bg-gray-200 px-2 py-1 rounded">void inSoLe(int arr[], int size)</code>:</p>
+                    <ul class="list-disc list-inside space-y-2 mb-4">
+                        <li>Hàm nhận vào một mảng số nguyên và kích thước của nó.</li>
+                        <li>Hàm này sẽ dùng vòng lặp <code class="font-mono">for</code> để in tất cả các số <strong>lẻ</strong> có trong mảng ra màn hình, mỗi số cách nhau một khoảng trắng.</li>
+                        <li>Trong hàm <code class="font-mono">main</code>, hãy khai báo một mảng, gán giá trị cho nó rồi gọi hàm <code class="font-mono">inSoLe</code> để kiểm tra.</li>
+                    </ul>
+                </section>
+
+                <section id="cau6" class="question-card bg-white p-8 rounded-xl shadow-lg">
+                    <h3 class="text-2xl font-bold mb-4"><span class="text-[#4a90e2]">Câu 6:</span> Viết hàm kiểm tra số nguyên tố</h3>
+                    <p class="mb-4">Viết một hàm có tên <code class="bg-gray-200 px-2 py-1 rounded">bool kiemTraNguyenTo(int n)</code>:</p>
+                     <ul class="list-disc list-inside space-y-2 mb-4">
+                        <li>Hàm nhận vào một tham số là số nguyên <code class="font-mono">n</code> (với <code class="font-mono">n > 1</code>).</li>
+                        <li>Hàm trả về <code class="font-mono">true</code> nếu <code class="font-mono">n</code> là số nguyên tố, và trả về <code class="font-mono">false</code> nếu không phải.</li>
+                        <li>Trong hàm <code class="font-mono">main</code>, hãy gọi hàm này với giá trị do người dùng nhập và in ra "La so nguyen to" hoặc "Khong phai so nguyen to".</li>
+                    </ul>
+                     <div class="bg-green-50 border-l-4 border-green-400 text-green-800 p-4 rounded-r-lg">
+                        <p><strong class="font-semibold">Gợi ý:</strong> Số nguyên tố là số lớn hơn 1 và chỉ chia hết cho 1 và chính nó. Bạn có thể dùng vòng lặp <code class="font-mono">for</code> chạy từ 2 đến <code class="font-mono">n-1</code> (hoặc $\sqrt{n}$) để kiểm tra.</p>
+                    </div>
+                </section>
+
+                <section id="cau7" class="question-card bg-white p-8 rounded-xl shadow-lg">
+                    <h3 class="text-2xl font-bold mb-4"><span class="text-[#4a90e2]">Câu 7:</span> Tìm giá trị lớn nhất</h3>
+                    <p class="mb-4">Viết chương trình thực hiện các yêu cầu sau:</p>
+                     <ul class="list-decimal list-inside space-y-2">
+                        <li>Cho phép người dùng nhập số lượng phần tử <code class="font-mono">n</code> của mảng.</li>
+                        <li>Cho phép người dùng nhập <code class="font-mono">n</code> số nguyên vào mảng.</li>
+                        <li>Tìm và in ra màn hình <strong>giá trị lớn nhất (max)</strong> có trong mảng vừa nhập.</li>
+                    </ul>
+                </section>
+            </div>
+        </main>
+    </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const sections = document.querySelectorAll('.question-card');
+    const navLinks = document.querySelectorAll('.nav-link');
+    const navList = document.getElementById('nav-list');
+
+    const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.4 
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const id = entry.target.getAttribute('id');
+                const activeLink = document.querySelector(`.nav-link[href="#${id}"]`);
+                
+                navLinks.forEach(link => link.classList.remove('active'));
+                if (activeLink) {
+                    activeLink.classList.add('active');
+                }
+            }
+        });
+    }, observerOptions);
+
+    sections.forEach(section => {
+        observer.observe(section);
+    });
+    
+    navList.addEventListener('click', (e) => {
+        if (e.target.tagName === 'A') {
+            e.preventDefault();
+            const targetId = e.target.getAttribute('href');
+            const targetSection = document.querySelector(targetId);
+            if (targetSection) {
+                 window.scrollTo({
+                     top: targetSection.offsetTop - 70,
+                     behavior: 'smooth'
+                 });
+            }
+        }
+    });
+
+});
+</script>
+
+</body>
+</html>

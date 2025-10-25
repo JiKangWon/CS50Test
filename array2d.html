@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài giảng: Mảng Hai Chiều (C/C++)</title>
+    
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        svg: {
+          fontCache: 'global'
+        }
+      };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+    </script>
+    <style>
+        /* CSS chuyên nghiệp với tông màu Xanh - Trắng */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f4f7f6;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background-color: #005a9c; /* Xanh đậm */
+            color: #ffffff;
+            padding: 2.5rem 1rem;
+            text-align: center;
+            border-bottom: 5px solid #007bff; /* Xanh sáng hơn */
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.8rem;
+            font-weight: 600;
+        }
+
+        header p {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            margin: 5px 0 0 0;
+        }
+
+        nav.table-of-contents {
+            background: #ffffff;
+            border-bottom: 1px solid #dee2e6;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        nav.table-of-contents ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        nav.table-of-contents li {
+            margin: 5px 15px;
+        }
+
+        nav.table-of-contents a {
+            text-decoration: none;
+            color: #005a9c;
+            font-weight: 600;
+            font-size: 1.1rem;
+            padding: 8px 12px;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        nav.table-of-contents a:hover,
+        nav.table-of-contents a:focus {
+            background-color: #e9ecef;
+            color: #004070;
+        }
+
+        main {
+            padding: 2rem 0;
+        }
+
+        section {
+            background-color: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            margin-bottom: 2.5rem;
+            padding: 2.5rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        section h2 {
+            font-size: 2.2rem;
+            color: #005a9c;
+            border-bottom: 3px solid #007bff;
+            padding-bottom: 15px;
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+        }
+
+        h3 {
+            font-size: 1.6rem;
+            color: #333;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            border-left: 5px solid #007bff;
+            padding-left: 12px;
+        }
+        
+        h4 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #111;
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        p, ul, li {
+            font-size: 1.05rem;
+            margin-bottom: 1rem;
+        }
+
+        ul {
+            padding-left: 25px;
+        }
+        
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        pre {
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            padding: 1.2rem;
+            overflow-x: auto;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 1rem;
+            line-height: 1.5;
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.04);
+        }
+
+        code {
+            font-family: 'Courier New', Courier, monospace;
+        }
+        
+        pre > code {
+            background-color: transparent;
+            padding: 0;
+            border-radius: 0;
+            font-size: inherit;
+        }
+
+        /* Inline code */
+        p > code, li > code {
+            background-color: #e9ecef;
+            padding: 3px 6px;
+            border-radius: 4px;
+            font-size: 0.95em;
+        }
+
+        .code-example {
+            border: 1px solid #e0e0e0;
+            border-radius: 5px;
+            margin-top: 1rem;
+        }
+
+        .code-example-title {
+            background-color: #f9f9f9;
+            padding: 10px 20px;
+            border-bottom: 1px solid #e0e0e0;
+            font-weight: 600;
+            color: #555;
+        }
+        
+        .code-example-body {
+            padding: 0;
+        }
+
+        .code-example-body pre {
+            margin: 0;
+            border: none;
+            box-shadow: none;
+            border-radius: 0 0 5px 5px;
+        }
+
+        .citation {
+            font-size: 0.85rem;
+            color: #6c757d;
+            font-style: italic;
+            display: inline;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2.5rem;
+            background-color: #343a40;
+            color: #ffffff;
+            margin-top: 2rem;
+        }
+        
+        footer h2 {
+            margin: 0;
+            font-size: 2.5rem;
+            color: #fff;
+            border: none;
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <h1>NHẬP MÔN LẬP TRÌNH <span class="citation"></span></h1>
+            <p>Chuyên đề: MẢNG HAI CHIỀU (C/C++) <span class="citation"></span></p>
+            <p style="font-size: 1rem; opacity: 0.8;">Biên soạn: GV. Nguyễn Chí Cường <span class="citation"></span></p>
+        </div>
+    </header>
+
+    <nav class="table-of-contents">
+        <div class="container">
+            <ul>
+                <li><a href="#section-1">1. Khái niệm</a></li>
+                <li><a href="#section-2">2. Khai báo</a></li>
+                <li><a href="#section-3">3. Truy xuất dữ liệu</a></li>
+                <li><a href="#section-4">4. Bài toán cơ bản</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+
+        <section id="section-1">
+            <h2>1. Khái niệm (Concept) <span class="citation"></span></h2>
+            
+            <h3>Định nghĩa</h3>
+            <p>Mảng hai chiều là một mảng mà các phần tử của nó là mảng một chiều. <span class="citation"></span> Nó giống như một bảng gồm có dòng và cột, được đánh dấu vị trí bằng các chỉ số bao gồm chỉ số dòng và chỉ số cột. <span class="citation"></span></p>
+            <p>Mảng hai chiều hay còn được gọi là <strong>ma trận</strong>. <span class="citation"></span></p>
+            <p>Một mảng <code>A</code> có <code>m</code> dòng và <code>n</code> cột (ký hiệu $A_{m,n}$ <span class="citation"></span>) sẽ có các chỉ số dòng chạy từ <code>0</code> đến <code>m-1</code> <span class="citation"></span> và các chỉ số cột chạy từ <code>0</code> đến <code>n-1</code>. <span class="citation"></span></p>
+
+            <h3>Các khái niệm với Ma Trận Vuông</h3>
+            <p>Ma trận vuông là ma trận có số dòng bằng số cột (ví dụ, <code>n</code> x <code>n</code>). <span class="citation"></span> Đối với ma trận vuông, ta có các khái niệm: <span class="citation"></span></p>
+            <ul>
+                <li><strong>Đường chéo chính:</strong> <span class="citation"></span> Gồm các phần tử có chỉ số <code>dòng = cột</code>. <span class="citation"></span></li>
+                <li><strong>Đường chéo phụ:</strong> <span class="citation"></span> Gồm các phần tử có chỉ số <code>dòng + cột = n - 1</code>. <span class="citation"></span></li>
+                <li><strong>Ma trận tam giác trên:</strong> <span class="citation"></span> Các phần tử nằm <em>trên</em> đường chéo chính, có <code>dòng < cột</code>. <span class="citation"></span></li>
+                <li><strong>Ma trận tam giác dưới:</strong> <span class="citation"></span> Các phần tử nằm <em>dưới</em> đường chéo chính, có <code>dòng > cột</code>. <span class="citation"></span></li>
+                <li><strong>Các khái niệm khác:</strong> Ma trận đơn vị <span class="citation"></span>, Ma trận đối xứng. <span class="citation"></span></li>
+            </ul>
+        </section>
+
+        <section id="section-2">
+            <h2>2. Khai báo (Declaration) <span class="citation"></span></h2>
+            
+            <h3>Khai báo kiểu mảng (Sử dụng <code>typedef</code>)</h3>
+            <p>Ta có thể định nghĩa một kiểu dữ liệu mảng 2 chiều mới bằng <code>typedef</code>. <span class="citation"></span></p>
+            <p><strong>Cú pháp:</strong> <span class="citation"></span></p>
+            <pre><code>typedef &lt;kiểu cơ sở&gt; &lt;tên kiểu&gt;[&lt;N1&gt;][&lt;N2&gt;]; <span class="citation"></span></code></pre>
+            <ul>
+                <li><code>&lt;N1&gt;</code> và <code>&lt;N2&gt;</code> là số lượng phần tử tối đa của mỗi chiều. <span class="citation"></span></li>
+            </ul>
+            <p><strong>Ví dụ:</strong> <span class="citation"></span></p>
+            <pre><code>typedef int MaTran[3][4]; <span class="citation"></span></code></pre>
+            
+            <h3>Khai báo biến mảng</h3>
+            <p>Có hai cách để khai báo một biến mảng 2 chiều: <span class="citation"></span></p>
+
+            <h4>1. Tường minh (Explicit) <span class="citation"></span></h4>
+            <p>Khai báo trực tiếp kiểu và kích thước.</p>
+            <p><strong>Cú pháp:</strong> <span class="citation"></span></p>
+            <pre><code>&lt;kiểu cơ sở&gt; &lt;tên biến&gt;[&lt;N1&gt;][&lt;N2&gt;]; <span class="citation"></span></code></pre>
+            <p><strong>Ví dụ:</strong> <span class="citation"></span></p>
+            <pre><code>int a[10][20], b[10][20]; <span class="citation"></span>
+int c[5][10]; <span class="citation"></span></code></pre>
+
+            <h4>2. Không tường minh (Implicit - Thông qua kiểu) <span class="citation"></span></h4>
+            <p>Sử dụng một kiểu <code>typedef</code> đã định nghĩa trước đó.</p>
+            <p><strong>Cú pháp:</strong> <span class="citation"></span></p>
+            <pre><code>typedef &lt;kiểu cơ sở&gt; &lt;tên kiểu&gt;[&lt;N1&gt;][&lt;N2&gt;]; <span class="citation"></span>
+&lt;tên kiểu&gt; &lt;tên biến&gt;; <span class="citation"></span>
+&lt;tên kiểu&gt; &lt;tên biến 1&gt;, &lt;tên biến 2&gt;; <span class="citation"></span></code></pre>
+            <p><strong>Ví dụ:</strong> <span class="citation"></span></p>
+            <pre><code>typedef int Matran10x20[10][20]; <span class="citation"></span>
+typedef int Matran5x10[5][10]; <span class="citation"></span>
+
+Matran10x20 a, b; <span class="citation"></span>
+Matran5x10 c; <span class="citation"></span></code></pre>
+
+        </section>
+
+        <section id="section-3">
+            <h2>3. Truy xuất dữ liệu kiểu mảng <span class="citation"></span></h2>
+
+            <h3>Truy xuất đến một phần tử <span class="citation"></span></h3>
+            <p>Ta truy xuất đến một phần tử cụ thể thông qua chỉ số dòng và chỉ số cột. <span class="citation"></span></p>
+            <p><strong>Cú pháp:</strong> <span class="citation"></span></p>
+            <pre><code>&lt;tên biến mảng&gt;[&lt;giá trị chỉ số dòng&gt;][&lt;giá trị chỉ số cột&gt;] <span class="citation"></span></code></pre>
+            <p><strong>Ví dụ:</strong> Cho mảng <code>int a[3][4];</code> <span class="citation"></span></p>
+            <ul>
+                <li><strong>Truy xuất hợp lệ:</strong> <code>a[0][0]</code>, <code>a[0][1]</code>, ..., <code>a[2][2]</code>, <code>a[2][3]</code>. <span class="citation"></span> (Chỉ số dòng từ 0-2, chỉ số cột từ 0-3).</li>
+                <li><strong>Truy xuất KHÔNG hợp lệ:</strong> <code>a[-1][0]</code>, <code>a[2][4]</code>, <code>a[3][3]</code>. <span class="citation"></span> (Vượt ra ngoài biên mảng đã khai báo).</li>
+            </ul>
+
+            <h3>Gán dữ liệu kiểu mảng <span class="citation"></span></h3>
+            <p>Không được sử dụng phép gán thông thường (=) để sao chép toàn bộ mảng này sang mảng khác. <span class="citation"></span></p>
+            <p>Phép gán <code><biến mảng đích> = <biến mảng nguồn>;</code> là <strong>SAI</strong>. <span class="citation"></span></p>
+            <p>Để sao chép mảng, ta phải gán trực tiếp giữa các phần tử, thường dùng 2 vòng lặp lồng nhau. <span class="citation"></span></p>
+            <p><strong>Ví dụ:</strong> Sao chép mảng <code>a</code> sang mảng <code>b</code> (cùng kích thước 5x10). <span class="citation"></span></p>
+            <pre><code>int a[5][10], b[5][10]; <span class="citation"></span>
+// b = a; // Lệnh này là SAI!
+
+// Cách làm đúng:
+int i, j; <span class="citation"></span>
+for (i = 0; i < 5; i++) <span class="citation"></span>
+{
+    for (j = 0; j < 10; j++) <span class="citation"></span>
+    {
+        b[i][j] = a[i][j]; <span class="citation"></span>
+    }
+}</code></pre>
+
+            <h3>Truyền mảng cho hàm <span class="citation"></span></h3>
+            <p>Khi khai báo hàm, tham số kiểu mảng 2D được viết tương tự như khai báo biến mảng. <span class="citation"></span></p>
+            <p><strong>Lưu ý quan trọng:</strong> Khi truyền mảng 2D, bạn <strong>có thể bỏ qua kích thước chiều thứ nhất (số dòng)</strong>, nhưng <strong>BẮT BUỘC phải chỉ định kích thước chiều thứ hai (số cột)</strong>. <span class="citation"></span></p>
+            <p>Việc truyền mảng cho hàm thực chất là truyền địa chỉ của phần tử đầu tiên của mảng. <span class="citation"></span> Do đó, mọi thay đổi nội dung của mảng bên trong hàm sẽ được giữ lại sau khi hàm kết thúc. <span class="citation"></span></p>
+            <p>Các cách khai báo tham số mảng 2D trong hàm (ví dụ mảng có 100 cột):</p>
+            <pre><code>void HamViDu(int a[50][100]); <span class="citation"></span>
+// Hoặc
+void HamViDu(int a[][100]); <span class="citation"></span>
+// Hoặc dùng cú pháp con trỏ
+void HamViDu(int (*a)[100]); <span class="citation"></span></code></pre>
+            
+            <h4>Truyền số phần tử thực sự</h4>
+            <p>Vì mảng được khai báo với kích thước tối đa (ví dụ <code>50x100</code>), ta phải truyền số lượng phần tử (số dòng, số cột) thực sự đang sử dụng qua các biến riêng (ví dụ <code>m</code> và <code>n</code>). <span class="citation"></span></p>
+            <p><strong>Ví dụ đầy đủ:</strong></p>
+            <pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+// Giả sử mảng có tối đa 100 cột
+const int MAXC = 100;
+const int MAXD = 50;
+
+// Khi nhập, m và n cần thay đổi nên dùng tham chiếu (&)
+void NhapMaTran(int a[][MAXC], int &m, int &n) { <span class="citation"></span>
+    cout << "Nhap so dong, so cot: ";
+    cin >> m >> n;
+    // ... (code nhập mảng)
+}
+
+// Khi xuất, m và n chỉ đọc nên không cần tham chiếu
+void XuatMaTran(int a[][MAXC], int m, int n) { <span class="citation"></span>
+    // ... (code xuất mảng)
+}
+
+int main() { <span class="citation"></span>
+    int a[MAXD][MAXC]; <span class="citation"></span>
+    int m, n; <span class="citation"></span>
+    
+    NhapMaTran(a, m, n); <span class="citation"></span>
+    XuatMaTran(a, m, n); <span class="citation"></span>
+    
+    return 0;
+} <span class="citation"></span></code></pre>
+        </section>
+
+        <section id="section-4">
+            <h2>4. Một số bài toán cơ bản <span class="citation"></span></h2>
+            <p>Dưới đây là cài đặt cho một số hàm xử lý mảng 2 chiều cơ bản. <span class="citation"></span></p>
+
+            <h3>Quy ước chung <span class="citation"></span></h3>
+            <p>Chúng ta sử dụng các hằng số để định nghĩa kích thước tối đa của mảng. <span class="citation"></span></p>
+            <pre><code>#define MAXD 50 <span class="citation"></span>
+#define MAXC 100 <span class="citation"></span></code></pre>
+            <p>Và sử dụng một số hàm phụ trợ: <span class="citation"></span></p>
+
+            <div class="code-example">
+                <div class="code-example-title">Hàm HoanVi (Lưu ý: code trong slide dường như có lỗi logic, tham số x nên là tham chiếu)</div>
+                <div class="code-example-body">
+            <pre><code>void HoanVi(int x, int &y) <span class="citation"></span>
+{
+    int tam = x; <span class="citation"></span>
+    x = y; <span class="citation"></span>
+    y = tam; <span class="citation"></span>
+} <span class="citation"></span></code></pre>
+                </div>
+            </div>
+
+            <div class="code-example">
+                <div class="code-example-title">Hàm LaSNT (Kiểm tra số nguyên tố) <span class="citation"></span></div>
+                <div class="code-example-body">
+            <pre><code>int LaSNT(int n) <span class="citation"></span>
+{
+    int i, dem = 0; <span class="citation"></span>
+    for (i = 1; i <= n; i++) <span class="citation"></span>
+    {
+        if (n % i == 0) <span class="citation"></span>
+            dem++; <span class="citation"></span>
+    }
+    if (dem == 2) <span class="citation"></span>
+        return 1; <span class="citation"></span>
+    else
+        return 0; <span class="citation"></span>
+} <span class="citation"></span></code></pre>
+                </div>
+            </div>
+
+            <h3>1. Nhập và Xuất Ma Trận</h3>
+            
+            <h4>Hàm Nhập Ma Trận <span class="citation"></span></h4>
+            <p><strong>Ý tưởng:</strong> Cho trước mảng 2 chiều với kích thước tối đa. <span class="citation"></span> Nhập vào số dòng <code>m</code> và số cột <code>n</code> thực sự. <span class="citation"></span> Dùng 2 vòng lặp <code>for</code> lồng nhau để nhập từng phần tử từ <code>a[0][0]</code> đến <code>a[m-1][n-1]</code>. <span class="citation"></span></p>
+
+            <div class="code-example">
+                <div class="code-example-title">Hàm Nhập Ma Trận</div>
+                <div class="code-example-body">
+            <pre><code>void NhapMaTran(int a[][MAXC], int &m, int &n) <span class="citation"></span>
+{
+    cout << "Nhap so dong, so cot cua ma tran: "; <span class="citation"></span>
+    cin >> m >> n; <span class="citation"></span>
+    
+    int i, j; <span class="citation"></span>
+    for (i = 0; i < m; i++) <span class="citation"></span>
+    { <span class="citation"></span>
+        for (j = 0; j < n; j++) <span class="citation"></span>
+        {
+            cout << "Nhap a[" << i << "][" << j << "]= "; <span class="citation"></span>
+            cin >> a[i][j]; <span class="citation"></span>
+        } <span class="citation"></span>
+    } <span class="citation"></span>
+}</code></pre>
+                </div>
+            </div>
+
+            <h4>Hàm Xuất Ma Trận <span class="citation"></span></h4>
+            <p><strong>Ý tưởng:</strong> Dùng 2 vòng lặp <code>for</code>. <span class="citation"></span> Vòng lặp ngoài duyệt các dòng (0 đến m-1). <span class="citation"></span> Vòng lặp trong duyệt các cột (0 đến n-1) và in ra giá trị <code>a[i][j]</code>. <span class="citation"></span> Xuống dòng mới (<code>"\n"</code>) sau khi in xong mỗi hàng. <span class="citation"></span></p>
+
+            <div class="code-example">
+                <div class="code-example-title">Hàm Xuất Ma Trận</div>
+                <div class="code-example-body">
+            <pre><code>void XuatMaTran(int a[][MAXC], int m, int n) <span class="citation"></span>
+{
+    int i, j; <span class="citation"></span>
+    for (i = 0; i < m; i++) <span class="citation"></span>
+    { <span class="citation"></span>
+        for (j = 0; j < n; j++) <span class="citation"></span>
+        {
+            cout << a[i][j] << " "; <span class="citation"></span>
+        }
+        cout << "\n"; <span class="citation"></span>
+    } <span class="citation"></span>
+} <span class="citation"></span></code></pre>
+                </div>
+            </div>
+
+            <h3>2. Tìm kiếm một phần tử <span class="citation"></span></h3>
+            <p><strong>Yêu cầu:</strong> Tìm xem phần tử <code>x</code> có nằm trong ma trận <code>a</code> (kích thước <code>m</code>x<code>n</code>) hay không. <span class="citation"></span></p>
+            <p><strong>Ý tưởng:</strong> Duyệt từng phần tử của ma trận. <span class="citation"></span> Nếu phần tử đang xét <code>a[i][j]</code> bằng <code>x</code> thì trả về 1 (tìm thấy). <span class="citation"></span> Nếu duyệt hết ma trận mà không tìm thấy, trả về 0. <span class="citation"></span></p>
+
+            <div class="code-example">
+                <div class="code-example-title">Hàm Tìm Kiếm <span class="citation"></span></div>
+                <div class="code-example-body">
+            <pre><code>int TimKiem(int a[][MAXC], int m, int n, int x) <span class="citation"></span>
+{
+    int i, j; <span class="citation"></span>
+    for (i = 0; i < m; i++) <span class="citation"></span>
+    {
+        for (j = 0; j < n; j++) <span class="citation"></span>
+        {
+            if (a[i][j] == x) <span class="citation"></span>
+                return 1; <span class="citation"></span>
+        }
+    }
+    return 0; <span class="citation"></span>
+} <span class="citation"></span></code></pre>
+                </div>
+            </div>
+
+            <h3>3. Kiểm tra tính chất (Ví dụ: Ma trận toàn số nguyên tố) <span class="citation"></span></h3>
+            <p><strong>Yêu cầu:</strong> Kiểm tra ma trận <code>a</code> (kích thước <code>m</code>x<code>n</code>) có phải là ma trận toàn các số nguyên tố hay không. <span class="citation"></span></p>
+            <p>Có nhiều cách tiếp cận: <span class="citation"></span></p>
+            <ul>
+                <li><strong>Cách 1:</strong> Đếm số lượng SNT. Nếu số lượng này bằng <code>m * n</code> thì trả về 1. <span class="citation"></span></li>
+                <li><strong>Cách 2:</strong> Đếm số lượng số KHÔNG phải SNT. Nếu số lượng này bằng 0 thì trả về 1. <span class="citation"></span></li>
+                <li><strong>Cách 3 (Hiệu quả nhất):</strong> Duyệt ma trận, tìm xem có phần tử nào KHÔNG phải SNT hay không. <span class="citation"></span> Nếu tìm thấy dù chỉ 1 số, lập tức trả về 0 (không toàn SNT). <span class="citation"></span> Nếu duyệt hết mảng mà không tìm thấy, trả về 1. <span class="citation"></span></li>
+            </ul>
+
+            <div class="code-example">
+                <div class="code-example-title">Hàm Kiểm Tra (Cách 3) <span class="citation"></span></div>
+                <div class="code-example-body">
+            <pre><code>int KiemTraC3(int a[][MAXC], int m, int n) <span class="citation"></span>
+{
+    int i, j; <span class="citation"></span>
+    for (i = 0; i < m; i++) <span class="citation"></span>
+    {
+        for (j = 0; j < n; j++) <span class="citation"></span>
+        {
+            if (LaSNT(a[i][j]) == 0) <span class="citation"></span> // Nếu a[i][j] không phải SNT
+                return 0; <span class="citation"></span> // Kết luận ngay
+        }
+    }
+    return 1; <span class="citation"></span> // Đã duyệt hết mà không thấy số nào vi phạm
+} <span class="citation"></span></code></pre>
+                </div>
+            </div>
+
+            <h3>4. Tính tổng các phần tử <span class="citation"></span></h3>
+            <p><strong>Ý tưởng chung:</strong> Duyệt ma trận và cộng dồn các phần tử có tọa độ (dòng, cột) thỏa mãn yêu cầu. <span class="citation"></span></p>
+
+            <div class="code-example">
+                <div class="code-example-title">Hàm tính tổng trên dòng <code>d</code> <span class="citation"></span></div>
+                <div class="code-example-body">
+            <pre><code>int TongDong(int a[][MAXC], int m, int n, int d) <span class="citation"></span>
+{
+    int j, tong; <span class="citation"></span>
+    tong = 0; <span class="citation"></span>
+    // Duyệt các cột trên dòng d
+    for (j = 0; j < n; j++) <span class="citation"></span>
+    {
+        tong = tong + a[d][j]; <span class="citation"></span>
+    }
+    return tong; <span class="citation"></span>
+} <span class="citation"></span></code></pre>
+                </div>
+            </div>
+
+            <div class="code-example">
+                <div class="code-example-title">Hàm tính tổng trên cột <code>c</code> <span class="citation"></span></div>
+                <div class="code-example-body">
+            <pre><code>int TongCot(int a[][MAXC], int m, int c) <span class="citation"></span>
+{
+    int i, tong; <span class="citation"></span>
+    tong = 0; <span class="citation"></span>
+    // Duyệt các dòng trên cột c
+    for (i = 0; i < m; i++) <span class="citation"></span>
+    {
+        tong = tong + a[i][c]; <span class="citation"></span>
+    }
+    return tong; <span class="citation"></span>
+} <span class="citation"></span></code></pre>
+                </div>
+            </div>
+
+            <p>Các bài toán sau đây áp dụng cho <strong>ma trận vuông</strong> (<code>n</code>x<code>n</code>). <span class="citation"></span></p>
+
+            <div class="code-example">
+                <div class="code-example-title">Hàm tính tổng đường chéo chính <span class="citation"></span></div>
+                <div class="code-example-body">
+            <pre><code>int TongDCChinh(int a[][MAXC], int n) <span class="citation"></span>
+{
+    int i, tong; <span class="citation"></span>
+    tong = 0; <span class="citation"></span>
+    for (i = 0; i < n; i++) <span class="citation"></span>
+    {
+        tong = tong + a[i][i]; <span class="citation"></span> // Phần tử có dòng = cột
+    }
+    return tong; <span class="citation"></span>
+} <span class="citation"></span></code></pre>
+                </div>
+            </div>
+
+            <div class="code-example">
+                <div class="code-example-title">Hàm tính tổng các phần tử <em>trên</em> đường chéo chính <span class="citation"></span></div>
+                <div class="code-example-body">
+            <pre><code>int TongTrenDCChinh(int a[][MAXC], int n) <span class="citation"></span>
+{
+    int i, j, tong; <span class="citation"></span>
+    tong = 0; <span class="citation"></span>
+    for (i = 0; i < n; i++) <span class="citation"></span>
+    {
+        for (j = 0; j < n; j++) <span class="citation"></span>
+        {
+            if (i < j) <span class="citation"></span> // Phần tử có dòng < cột
+                tong = tong + a[i][j]; <span class="citation"></span>
+        }
+    }
+    return tong; <span class="citation"></span>
+} <span class="citation"></span></code></pre>
+                </div>
+            </div>
+
+            <div class="code-example">
+                <div class="code-example-title">Hàm tính tổng các phần tử <em>dưới</em> đường chéo chính <span class="citation"></span></div>
+                <div class="code-example-body">
+            <pre><code>int TongTrenDCChinh(int a[][MAXC], int n) <span class="citation"></span> // Tên hàm trong slide có vẻ là typo
+{
+    int i, j, tong; <span class="citation"></span>
+    tong = 0; <span class="citation"></span>
+    for (i = 0; i < n; i++) <span class="citation"></span>
+    {
+        for (j = 0; j < n; j++) <span class="citation"></span>
+        {
+            if (i > j) <span class="citation"></span> // Phần tử có dòng > cột
+                tong = tong + a[i][j]; <span class="citation"></span>
+        }
+    }
+    return tong; <span class="citation"></span>
+} <span class="citation"></span></code></pre>
+                </div>
+            </div>
+
+            <div class="code-example">
+                <div class="code-example-title">Hàm tính tổng đường chéo phụ <span class="citation"></span></div>
+                <div class="code-example-body">
+            <pre><code>int TongDCPhu(int a[][MAXC], int n) <span class="citation"></span>
+{
+    int i, tong; <span class="citation"></span>
+    tong = 0; <span class="citation"></span>
+    for (i = 0; i < n; i++) <span class="citation"></span>
+    {
+        tong = tong + a[i][n - i - 1]; <span class="citation"></span> // Phần tử có dòng + cột = n - 1
+    }
+    return tong; <span class="citation"></span>
+} <span class="citation"></span></code></pre>
+                </div>
+            </div>
+
+            <h3>5. Tìm giá trị lớn nhất (Max) của Ma Trận <span class="citation"></span></h3>
+            <p><strong>Yêu cầu:</strong> Tìm giá trị lớn nhất trong ma trận <code>a</code> (kích thước <code>m</code>x<code>n</code>). <span class="citation"></span></p>
+            <p><strong>Ý tưởng:</strong> <span class="citation"></span></p>
+            <ol>
+                <li>Giả sử giá trị <code>max</code> hiện tại là phần tử đầu tiên <code>a[0][0]</code>. <span class="citation"></span></li>
+                <li>Lần lượt kiểm tra tất cả các phần tử còn lại của ma trận (dùng 2 vòng lặp). <span class="citation"></span></li>
+                <li>Nếu tìm thấy phần tử <code>a[i][j]</code> nào lớn hơn <code>max</code>, cập nhật <code>max = a[i][j]</code>. <span class="citation"></span></li>
+                <li>Sau khi duyệt hết mảng, <code>max</code> chính là giá trị lớn nhất. <span class="citation"></span></li>
+            </ol>
+            
+            <div class="code-example">
+                <div class="code-example-title">Hàm tìm Max <span class="citation"></span></div>
+                <div class="code-example-body">
+            <pre><code>int TimMax(int a[][MAXC], int m, int n) <span class="citation"></span>
+{
+    int i, j, max; <span class="citation"></span>
+    max = a[0][0]; <span class="citation"></span>
+    
+    for (i = 0; i < m; i++) <span class="citation"></span>
+    {
+        for (j = 0; j < n; j++) <span class="citation"></span>
+        {
+            if (a[i][j] > max) <span class="citation"></span>
+            {
+                max = a[i][j]; <span class="citation"></span>
+            }
+        }
+    }
+    return max; <span class="citation"></span>
+} <span class="citation"></span></code></pre>
+                </div>
+            </div>
+            
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <h2>Q & A <span class="citation"></span></h2>
+            <p>? <span class="citation"></span></p>
+        </div>
+    </footer>
+
+</body>
+</html>
