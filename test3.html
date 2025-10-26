@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài tập Mảng Hai Chiều (C/C++)</title>
+    
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        svg: {
+          fontCache: 'global'
+        }
+      };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+    </script>
+
+    <style>
+        /* CSS chuyên nghiệp với tông màu Xanh - Trắng */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f4f7f6;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background-color: #005a9c; /* Xanh đậm */
+            color: #ffffff;
+            padding: 2.5rem 1rem;
+            text-align: center;
+            border-bottom: 5px solid #007bff; /* Xanh sáng hơn */
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.8rem;
+            font-weight: 600;
+        }
+
+        main {
+            padding: 2rem 0;
+        }
+
+        /* Kiểu cho mỗi bài tập */
+        .exercise {
+            background-color: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            padding: 2rem 2.5rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        .exercise h3 {
+            font-size: 1.8rem;
+            color: #005a9c;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 10px;
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+        }
+
+        .exercise h4 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #333;
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .exercise p {
+            font-size: 1.05rem;
+            margin-bottom: 1rem;
+        }
+
+        pre {
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            padding: 1.2rem;
+            overflow-x: auto;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 1rem;
+            line-height: 1.5;
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.04);
+        }
+
+        code {
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        .explanation {
+            font-style: italic;
+            color: #555;
+            background-color: #f9f9f9;
+            border-left: 4px solid #007bff;
+            padding: 10px 15px;
+            margin-top: 10px;
+            border-radius: 0 4px 4px 0;
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <h1>Tổng hợp Bài tập Mảng Hai Chiều (C/C++)</h1>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <section class="exercise">
+            <h3>Bài 1: Nhập và Xuất Ma Trận</h3>
+            <p>Nhập vào ma trận $A_{m \times n}$ và xuất lại ma trận đó.</p>
+            <h4>Input mẫu:</h4>
+            <pre><code>3 4
+1 2 3 4
+5 6 7 8
+9 10 11 12</code></pre>
+            <h4>Output mẫu:</h4>
+            <pre><code>1 2 3 4
+5 6 7 8
+9 10 11 12</code></pre>
+        </section>
+
+        <section class="exercise">
+            <h3>Bài 2: Tính Tổng Các Phần Tử</h3>
+            <p>Tính tổng tất cả các phần tử trong ma trận $A_{m \times n}$.</p>
+            <h4>Input mẫu:</h4>
+            <pre><code>2 3
+1 2 3
+4 5 6</code></pre>
+            <h4>Output mẫu:</h4>
+            <pre><code>21</code></pre>
+        </section>
+
+        <section class="exercise">
+            <h3>Bài 3: Tìm Phần Tử Lớn Nhất (Max)</h3>
+            <p>Tìm giá trị lớn nhất trong ma trận $A_{m \times n}$.</p>
+            <h4>Input mẫu:</h4>
+            <pre><code>3 3
+1 9 3
+4 -1 6
+7 8 2</code></pre>
+            <h4>Output mẫu:</h4>
+            <pre><code>9</code></pre>
+        </section>
+
+        <section class="exercise">
+            <h3>Bài 4: Tìm Phần Tử Nhỏ Nhất (Min)</h3>
+            <p>Tìm giá trị nhỏ nhất trong ma trận $A_{m \times n}$.</p>
+            <h4>Input mẫu:</h4>
+            <pre><code>3 3
+1 9 3
+4 -1 6
+7 8 2</code></pre>
+            <h4>Output mẫu:</h4>
+            <pre><code>-1</code></pre>
+        </section>
+
+        <section class="exercise">
+            <h3>Bài 5: Tính Tổng Hàng <code>k</code></h3>
+            <p>Tính tổng các phần tử trên hàng $k$ (chỉ số $k$) của ma trận.</p>
+            <h4>Input mẫu:</h4>
+            <pre><code>3 4
+1 2 3 4
+5 6 7 8
+9 10 11 12
+1</code></pre>
+            <h4>Output mẫu:</h4>
+            <pre><code>26</code></pre>
+            <p class="explanation">Giải thích: 5 + 6 + 7 + 8 = 26</p>
+        </section>
+
+        <section class="exercise">
+            <h3>Bài 6: Tính Tổng Cột <code>k</code></h3>
+            <p>Tính tổng các phần tử trên cột $k$ (chỉ số $k$) của ma trận.</p>
+            <h4>Input mẫu:</h4>
+            <pre><code>3 4
+1 2 3 4
+5 6 7 8
+9 10 11 12
+2</code></pre>
+            <h4>Output mẫu:</h4>
+            <pre><code>21</code></pre>
+            <p class="explanation">Giải thích: 3 + 7 + 11 = 21</p>
+        </section>
+
+        <section class="exercise">
+            <h3>Bài 7: Đếm Số Lượng Số Chẵn</h3>
+            <p>Đếm số lượng phần tử là số chẵn trong ma trận.</p>
+            <h4>Input mẫu:</h4>
+            <pre><code>2 4
+1 2 3 4
+5 6 7 8</code></pre>
+            <h4>Output mẫu:</h4>
+            <pre><code>4</code></pre>
+        </section>
+
+        <section class="exercise">
+            <h3>Bài 8: Đếm Số Lượng Số Âm</h3>
+            <p>Đếm số lượng phần tử là số âm trong ma trận.</p>
+            <h4>Input mẫu:</h4>
+            <pre><code>3 3
+1 -2 3
+-4 0 6
+-7 8 -9</code></pre>
+            <h4>Output mẫu:</h4>
+            <pre><code>4</code></pre>
+        </section>
+
+        <section class="exercise">
+            <h3>Bài 9: Tìm Sự Tồn Tại Của <code>x</code></h3>
+            <p>Nhập vào một giá trị $x$, kiểm tra xem $x$ có tồn tại trong ma trận hay không.</p>
+            <h4>Input mẫu:</h4>
+            <pre><code>3 3
+1 2 3
+4 5 6
+7 8 9
+5</code></pre>
+            <h4>Output mẫu:</h4>
+            <pre><code>Co</code></pre>
+        </section>
+
+        <section class="exercise">
+            <h3>Bài 10: Thay Thế Số Âm</h3>
+            <p>Thay thế tất cả các phần tử âm trong ma trận bằng giá trị 0 và xuất ma trận.</p>
+            <h4>Input mẫu:</h4>
+            <pre><code>3 3
+1 -2 3
+-4 5 6
+7 -8 0</code></pre>
+            <h4>Output mẫu:</h4>
+            <pre><code>1 0 3
+0 5 6
+7 0 0</code></pre>
+        </section>
+
+        <section class="exercise">
+            <h3>Bài 11: Tổng Đường Chéo Chính</h3>
+            <p>Tính tổng các phần tử nằm trên đường chéo chính của ma trận vuông $A_{n \times n}$.</p>
+            <h4>Input mẫu:</h4>
+            <pre><code>3
+1 2 3
+4 5 6
+7 8 9</code></pre>
+            <h4>Output mẫu:</h4>
+            <pre><code>15</code></pre>
+            <p class="explanation">Giải thích: 1 + 5 + 9 = 15</p>
+        </section>
+
+        <section class="exercise">
+            <h3>Bài 12: Tổng Đường Chéo Phụ</h3>
+            <p>Tính tổng các phần tử nằm trên đường chéo phụ của ma trận vuông $A_{n \times n}$.</p>
+            <h4>Input mẫu:</h4>
+            <pre><code>3
+1 2 3
+4 5 6
+7 8 9</code></pre>
+            <h4>Output mẫu:</h4>
+            <pre><code>15</code></pre>
+            <p class="explanation">Giải thích: 3 + 5 + 7 = 15</p>
+        </section>
+
+        <section class="exercise">
+            <h3>Bài 13: Tổng Nửa Trên Đường Chéo Chính</h3>
+            <p>Tính tổng các phần tử nằm phía trên đường chéo chính (không bao gồm đường chéo chính) của ma trận vuông $A_{n \times n}$.</p>
+            <h4>Input mẫu:</h4>
+            <pre><code>3
+1 2 3
+4 5 6
+7 8 9</code></pre>
+            <h4>Output mẫu:</h4>
+            <pre><code>11</code></pre>
+            <p class="explanation">Giải thích: 2 + 3 + 6 = 11</p>
+        </section>
+
+        <section class="exercise">
+            <h3>Bài 14: Tổng Nửa Dưới Đường Chéo Chính</h3>
+            <p>Tính tổng các phần tử nằm phía dưới đường chéo chính (không bao gồm đường chéo chính) của ma trận vuông $A_{n \times n}$.</p>
+            <h4>Input mẫu:</h4>
+            <pre><code>3
+1 2 3
+4 5 6
+7 8 9</code></pre>
+            <h4>Output mẫu:</h4>
+            <pre><code>19</code></pre>
+            <p class="explanation">Giải thích: 4 + 7 + 8 = 19</p>
+        </section>
+
+        <section class="exercise">
+            <h3>Bài 15: Đếm Số Nguyên Tố</h3>
+            <p>Đếm số lượng các số nguyên tố trong ma trận $A_{m \times n}$.</p>
+            <h4>Input mẫu:</h4>
+            <pre><code>3 3
+1 2 3
+4 5 6
+7 8 9</code></pre>
+            <h4>Output mẫu:</h4>
+            <pre><code>4</code></pre>
+            <p class="explanation">Các SNT: 2, 3, 5, 7</p>
+        </section>
+
+        <section class="exercise">
+            <h3>Bài 16: Liệt Kê Số Hoàn Hảo</h3>
+            <p>Liệt kê các số hoàn hảo trong ma trận. (Số hoàn hảo là số có tổng các ước thực sự bằng chính nó, ví dụ: 6 = 1+2+3).</p>
+            <h4>Input mẫu:</h4>
+            <pre><code>2 3
+6 4 1
+28 12 6</code></pre>
+            <h4>Output mẫu:</h4>
+            <pre><code>6 28 6</code></pre>
+        </section>
+
+        <section class="exercise">
+            <h3>Bài 17: Phần Tử Lớn Nhất Trên Hàng <code>k</code></h3>
+            <p>Tìm phần tử lớn nhất trên hàng $k$ của ma trận $A_{m \times n}$.</p>
+            <h4>Input mẫu:</h4>
+            <pre><code>3 4
+1 10 3 4
+5 6 7 8
+9 2 11 1
+0</code></pre>
+            <h4>Output mẫu:</h4>
+            <pre><code>10</code></pre>
+        </section>
+
+        <section class="exercise">
+            <h3>Bài 18: Phần Tử Nhỏ Nhất Trên Cột <code>k</code></h3>
+            <p>Tìm phần tử nhỏ nhất trên cột $k$ của ma trận $A_{m \times n}$.</p>
+            <h4>Input mẫu:</h4>
+            <pre><code>3 4
+1 10 3 4
+5 6 1 8
+9 2 11 0
+2</code></pre>
+            <h4>Output mẫu:</h4>
+            <pre><code>1</code></pre>
+        </section>
+
+        <section class="exercise">
+            <h3>Bài 19: Kiểm Tra Ma Trận Toàn Chẵn</h3>
+            <p>Kiểm tra xem ma trận có toàn là số chẵn hay không.</p>
+            <h4>Input mẫu:</h4>
+            <pre><code>2 3
+2 4 6
+8 10 1</code></pre>
+            <h4>Output mẫu:</h4>
+            <pre><code>Khong</code></pre>
+        </section>
+
+        <section class="exercise">
+            <h3>Bài 20: In Các Phần Tử Biên</h3>
+            <p>In ra các phần tử nằm trên các đường biên của ma trận (hàng đầu, hàng cuối, cột đầu, cột cuối).</p>
+            <h4>Input mẫu:</h4>
+            <pre><code>4 4
+1 2 3 4
+5 6 7 8
+9 10 11 12
+13 14 15 16</code></pre>
+            <h4>Output mẫu:</h4>
+            <pre><code>1 2 3 4 8 12 16 15 14 13 9 5</code></pre>
+        </section>
+
+        <section class="exercise">
+            <h3>Bài 21: Tìm Hàng Có Tổng Lớn Nhất</h3>
+            <p>Tìm chỉ số của hàng (row) có tổng các phần tử là lớn nhất.</p>
+            <h4>Input mẫu:</h4>
+            <pre><code>3 3
+1 2 3
+10 1 1
+4 5 1</code></pre>
+            <h4>Output mẫu:</h4>
+            <pre><code>1</code></pre>
+            <p class="explanation">Hàng 0 (tổng 6), Hàng 1 (tổng 12), Hàng 2 (tổng 10). Max là 12 ở hàng 1.</p>
+        </section>
+
+        <section class="exercise">
+            <h3>Bài 22: Tìm Cột Có Tổng Nhỏ Nhất</h3>
+            <p>Tìm chỉ số của cột (column) có tổng các phần tử là nhỏ nhất.</p>
+            <h4>Input mẫu:</h4>
+            <pre><code>3 3
+1 10 4
+2 1 5
+3 1 1</code></pre>
+            <h4>Output mẫu:</h4>
+            <pre><code>2</code></pre>
+            <p class="explanation">Cột 0 (tổng 6), Cột 1 (tổng 12), Cột 2 (tổng 10). Min là 6 ở cột 0.</p>
+            <h4>Input mẫu:</h4>
+            <pre><code>3 3
+            1 10 4
+            2 1 5
+            3 1 1</code></pre>
+            <h4>Output mẫu:</h4>
+            <pre><code>0</code></pre>
+            <p class="explanation">Cột 0 (tổng 1+2+3=6), Cột 1 (tổng 10+1+1=12), Cột 2 (tổng 4+5+1=10). Min là 6 ở cột 0.</p>
+        </section>
+
+        <section class="exercise">
+            <h3>Bài 23: Hoán Vị Hai Hàng</h3>
+            <p>Nhập vào hai chỉ số hàng $r_1$ và $r_2$, hoán vị hàng $r_1$ và hàng $r_2$ của ma trận.</p>
+            <h4>Input mẫu:</h4>
+            <pre><code>3 3
+1 2 3
+4 5 6
+7 8 9
+0 2</code></pre>
+            <h4>Output mẫu:</h4>
+            <pre><code>7 8 9
+4 5 6
+1 2 3</code></pre>
+        </section>
+
+        <section class="exercise">
+            <h3>Bài 24: Hoán Vị Hai Cột</h3>
+            <p>Nhập vào hai chỉ số cột $c_1$ và $c_2$, hoán vị cột $c_1$ và cột $c_2$ của ma trận.</p>
+            <h4>Input mẫu:</h4>
+            <pre><code>3 3
+1 2 3
+4 5 6
+7 8 9
+0 1</code></pre>
+            <h4>Output mẫu:</h4>
+            <pre><code>2 1 3
+5 4 6
+8 7 9</code></pre>
+        </section>
+
+        <section class="exercise">
+            <h3>Bài 25: Ma Trận Chuyển Vị</h3>
+            <p>Tìm ma trận chuyển vị $A^T$ của ma trận $A_{m \times n}$.</p>
+            <h4>Input mẫu:</h4>
+            <pre><code>2 3
+1 2 3
+4 5 6</code></pre>
+            <h4>Output mẫu:</h4>
+            <pre><code>1 4
+2 5
+3 6</code></pre>
+        </section>
+
+        <section class="exercise">
+            <h3>Bài 26: Kiểm Tra Ma Trận Đối Xứng</h3>
+            <p>Kiểm tra xem ma trận vuông $A_{n \times n}$ có đối xứng qua đường chéo chính hay không ($A[i][j] == A[j][i]$).</p>
+            <h4>Input mẫu:</h4>
+            <pre><code>3
+1 2 3
+2 5 4
+3 4 9</code></pre>
+            <h4>Output mẫu:</h4>
+            <pre><code>Co</code></pre>
+        </section>
+
+        <section class="exercise">
+            <h3>Bài 27: Sắp Xếp Hàng <code>k</code> Tăng Dần</h3>
+            <p>Sắp xếp các phần tử trên hàng $k$ của ma trận theo thứ tự tăng dần.</p>
+            <h4>Input mẫu:</h4>
+            <pre><code>3 4
+1 2 3 4
+9 5 7 1
+8 10 11 12
+1</code></pre>
+            <h4>Output mẫu:</h4>
+            <pre><code>1 2 3 4
+1 5 7 9
+8 10 11 12</code></pre>
+        </section>
+
+        <section class="exercise">
+            <h3>Bài 28: Đếm Số Nguyên Tố Trên Đường Chéo Phụ</h3>
+            <p>Đếm số lượng số nguyên tố trên đường chéo phụ của ma trận vuông $A_{n \times n}$.</p>
+            <h4>Input mẫu:</h4>
+            <pre><code>4
+1 2 3 5
+5 6 7 8
+9 1 3 4
+2 6 7 8</code></pre>
+            <h4>Output mẫu:</h4>
+            <pre><code>3</code></pre>
+            <p class="explanation">Giải thích: Đường chéo phụ là {5, 7, 1, 2}. Các SNT là 5, 7, 2.</p>
+        </section>
+
+        <section class="exercise">
+            <h3>Bài 29: Tìm Giá Trị Lớn Nhất Trên 2 Đường Chéo</h3>
+            <p>Tìm giá trị lớn nhất trong các phần tử thuộc đường chéo chính và đường chéo phụ của ma trận vuông $A_{n \times n}$.</p>
+            <h4>Input mẫu:</h4>
+            <pre><code>3
+1 2 9
+4 10 6
+11 8 3</code></pre>
+            <h4>Output mẫu:</h4>
+            <pre><code>11</code></pre>
+            <p class="explanation">Giải thích: Chéo chính {1, 10, 3}. Chéo phụ {9, 10, 11}. Max là 11.</p>
+        </section>
+
+        <section class="exercise">
+            <h3>Bài 30: Tìm Phần Tử Yên Ngựa</h3>
+            <p>Tìm phần tử "yên ngựa" trong ma trận: là phần tử nhỏ nhất trong hàng của nó và lớn nhất trong cột của nó. (In ra phần tử đầu tiên tìm thấy, nếu không có thì không in gì).</p>
+            <h4>Input mẫu:</h4>
+            <pre><code>3 3
+1 2 3
+4 5 6
+7 8 9</code></pre>
+            <h4>Output mẫu:</h4>
+            <pre><code>7</code></pre>
+            <p class="explanation">Giải thích: 7 là min hàng 2 (7,8,9) và là max cột 0 (1,4,7).</p>
+        </section>
+
+    </main>
+
+</body>
+</html>
